@@ -50,7 +50,11 @@ export const counterSlice = createSlice({
       .addCase(incrementAsync.fulfilled, (state, action) => {
         state.status = 'idle';
         state.value += action.payload;
-      });
+      })
+      .addCase(incrementAsync.rejected, (state, action) => {
+        state.status = 'rejected';
+        state.value = 0;
+      })
   },
 });
 
